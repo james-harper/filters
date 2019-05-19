@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import HotelListItem from './HotelListItem';
 
 const mapStateToProps = state => {
-  return { hotels: state.hotels };
+  return { hotels: state.visibleHotels };
 };
 
 const HotelList = ({ hotels }) => (

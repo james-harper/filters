@@ -1,8 +1,13 @@
-import hotels from '../data/hotels.json';
+import { generateHotels } from './../data/mockApi';
+
 import { APPLY_FACILITY_FILTER, REMOVE_FACILITY_FILTER } from '../constants/action-types';
+
+const hotels = generateHotels();
 
 const initialState = {
   hotels,
+  loading: false,
+  visibleHotels: hotels,
   facilityFilters: []
 };
 
@@ -12,6 +17,7 @@ function intersect(a, b) {
 
 export default function (state = initialState, action) {
   const { facilityFilters } = state;
+
   if (action.type === APPLY_FACILITY_FILTER) {
     const newFilters = facilityFilters.includes(action.payload) ? facilityFilters : [
       ...facilityFilters,
@@ -20,7 +26,7 @@ export default function (state = initialState, action) {
 
     return {
       facilityFilters: newFilters,
-      hotels: hotels.filter(hotel => intersect(hotel.facilities, newFilters)),
+      visibleHotels: hotels.filter(hotel => intersect(hotel.facilities, newFilters)),
     };
   }
 
@@ -32,7 +38,7 @@ export default function (state = initialState, action) {
 
     return {
       facilityFilters: newFilters,
-      hotels: newHotels,
+      visibleHotels: newHotels,
     };
   }
 

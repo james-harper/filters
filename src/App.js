@@ -3,7 +3,6 @@ import './App.css';
 import HotelList from './components/hotels/HotelList';
 import FacilityFilters from './components/filters/FacilityFilters';
 
-
 function App() {
   return (
     <div className="App">
