@@ -6,7 +6,7 @@ const randomNumber = (min, max) => Math.floor(Math.random() * (min + max) + min)
 const arrayOf = (size) => [...Array(size).keys()];
 
 const getRandomFacilities = () => {
-  const numberOfFacilities = randomNumber(0, facilities.length);
+  const numberOfFacilities = randomNumber(0, facilities.length + 1);
 
   if (numberOfFacilities === facilities.length) {
     return facilities;

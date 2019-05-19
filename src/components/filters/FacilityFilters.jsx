@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 
 const FacilityFilters = ({ filters, dispatch }) => (
   <>
-    <span>Filter by facilities: </span>
+    <span className="f6 fw6 ttu tracked">Filter by facilities: </span>
     {facilities.map(facility => (
       <FilterButton
         key={facility}

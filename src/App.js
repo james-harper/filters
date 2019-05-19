@@ -6,7 +6,7 @@ import FacilityFilters from './components/filters/FacilityFilters';
 function App() {
   return (
     <div className="App">
-      <h3>Hotels</h3>
+      <h1>Hotels</h1>
       <FacilityFilters />
       <HotelList />
     </div>
