@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import HotelListItem from './HotelListItem';
 
 const mapStateToProps = state => {
@@ -14,5 +15,17 @@ const HotelList = ({ hotels }) => (
     {hotels.map(hotel => <HotelListItem key={hotel.name} hotel={hotel} />)}
   </>
 );
+
+HotelList.defaultProps = {
+  hotels: []
+};
+
+HotelList.propTypes = {
+  hotels: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    starRating: PropTypes.number,
+    facilities: PropTypes.arrayOf(PropTypes.string),
+  })),
+};
 
 export default connect(mapStateToProps)(HotelList);

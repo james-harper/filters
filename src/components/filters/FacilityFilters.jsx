@@ -1,10 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import FilterButton from './FilterButton';
 import { applyFacilityFilter, removeFacilityFilter } from '../../actions/filters';
 import data from '../../data/facilities.json';
 
 const { facilities } = data;
+
 const mapStateToProps = state => {
   return { filters: state.facilityFilters };
 };
@@ -23,5 +25,15 @@ const FacilityFilters = ({ filters, dispatch }) => (
     ))}
   </>
 );
+
+FacilityFilters.defaultProps = {
+  filters: [],
+  dispatch: () => {},
+};
+
+FacilityFilters.propTypes = {
+  filters: PropTypes.arrayOf(PropTypes.string),
+  dispatch: PropTypes.func,
+};
 
 export default connect(mapStateToProps)(FacilityFilters);

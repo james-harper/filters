@@ -1,5 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+/**
+ * Render star rating
+ * @param {number} num - Number of stars
+ * @returns {string}
+ */
 const renderStars = (num) => {
   const stars = [...Array(5).keys()];
   return stars.map((_, i) => {
@@ -27,5 +33,13 @@ const HotelListItem = ({ hotel }) => (
     </div>
   </article>
 );
+
+HotelListItem.propTypes = {
+  hotel: PropTypes.shape({
+    name: PropTypes.string,
+    starRating: PropTypes.number,
+    facilities: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+};
 
 export default HotelListItem;

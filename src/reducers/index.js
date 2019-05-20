@@ -11,10 +11,19 @@ const initialState = {
   facilityFilters: []
 };
 
+/**
+ * Compare 2 arrays and determine if their elements overlap
+ * @param {string[]} a
+ * @param {string[]} b
+ * @returns {boolean}
+ */
 function intersect(a, b) {
   return a.filter(Set.prototype.has, new Set(b)).length >= b.length;
 }
 
+/**
+ * Root reducer function
+ */
 export default function (state = initialState, action) {
   const { facilityFilters } = state;
 

@@ -9,5 +9,3 @@ A React/Redux app which simulates some search results and how filters can be app
 
 ## What has not yet been completed
 - tests
-- jsdoc
-- propTypes
