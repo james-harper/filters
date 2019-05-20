@@ -6,4 +6,4 @@ A React/Redux app which simulates some search results and how filters can be app
 - Install dependencies: `npm install`
 - Start dev server: `npm start`
 - View in browser: `http://localhost:3000`
-- To run tests: `npm test a`
+- To run tests: `npm test .`
