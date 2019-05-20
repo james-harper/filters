@@ -6,13 +6,13 @@ const hotels = generateHotels();
 
 const initialState = {
   hotels,
-  loading: false,
   visibleHotels: hotels,
   facilityFilters: []
 };
 
 /**
  * Compare 2 arrays and determine if their elements overlap
+ *
  * @param {string[]} a
  * @param {string[]} b
  * @returns {boolean}
@@ -34,18 +34,20 @@ export default function (state = initialState, action) {
     ];
 
     return {
+      ...state,
       facilityFilters: newFilters,
-      visibleHotels: hotels.filter(hotel => intersect(hotel.facilities, newFilters)),
+      visibleHotels: state.hotels.filter(hotel => intersect(hotel.facilities, newFilters)),
     };
   }
 
   if (action.type === REMOVE_FACILITY_FILTER) {
     const newFilters = facilityFilters.filter(f => f !== action.payload);
-    const newHotels = newFilters.length ? hotels.filter(hotel => {
+    const newHotels = newFilters.length ? state.hotels.filter(hotel => {
       return intersect(hotel.facilities, newFilters);
-    }) : hotels;
+    }) : state.hotels;
 
     return {
+      ...state,
       facilityFilters: newFilters,
       visibleHotels: newHotels,
     };
